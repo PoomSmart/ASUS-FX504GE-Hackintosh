@@ -88,6 +88,38 @@ No thorough test on this.
 1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
+## I2C ELAN1200 Precision TouchPad (pci8086,a368)
+1. Kexts compiled from the source code (as of May 2019), can also be found in this repository under "Trackpad" folder, install the kexts to `/Library/Extensions` and rebuild kext cache. 
+2. DSDT editing for trackpad support (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)) (look at `** MODIFIED **`):
+```
+Device (TPD0)
+{
+    ...
+
+    Name (SBFG, ResourceTemplate ()
+    {
+        GpioInt (Level, ActiveLow, ExclusiveAndWake, PullDefault, 0x0000,
+            "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
+            )
+            {   // Pin list
+                0x0000
+            }
+    })
+
+    ...
+
+    Method (_STA, 0, NotSerialized)  // _STA: Status
+    {
+        Return (0x0F) // ** MODIFIED **
+    }
+    Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+    {
+        Return (ConcatenateResTemplate (SBFB, SBFG)) // ** MODIFIED **
+    }
+```
+
+Trackpad works okay but with minor stuttering.
+
 ## Miscellaneous
 1. NoTouchID kext installed to `/Library/Extensions` (MacBookPro15,2 has Touch ID)
 
@@ -96,8 +128,6 @@ No thorough test on this.
 Discrete graphic, we probably never see the day. For now, use `SSDT-DDGPU.aml` (in `/EFI/Clover/ACPI/patched`) to power it off.
 ## Intel Wi-Fi AC 9560
 Intel built-in Wi-Fi chipset, we again probably never see the day.
-## I2C ELAN1200 Precision TouchPad (pci8086,a368)
-VoodooI2C does not support GPIO controller (interrupt mode) on Coffee Lake machines, yet.
 ## Intel Bluetooth
 It never works if Wi-Fi doesn't work.
 
