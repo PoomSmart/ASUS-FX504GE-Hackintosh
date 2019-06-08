@@ -90,7 +90,8 @@ No thorough test on this.
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
 1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) and later (VoodooI2C + VoodooI2CHID + VoodooI2CUPDDEngine). 
-2. DSDT editing for trackpad support (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)) (look at `** MODIFIED **`):
+2. DSDT patches: **\[GPIO\] GPIO Controller Enable \[SKL+\]** and **\[Windows\] Windows 10 Patch**
+3. DSDT GPIO Pinning (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)) (look at `** MODIFIED **`):
 ```
 Device (TPD0)
 {
