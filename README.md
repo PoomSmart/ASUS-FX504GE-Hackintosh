@@ -6,6 +6,17 @@ Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE l
 2. APFS partition format has to be used
 3. If you are upgrading from the previous version and your partition is HFS+, better boot the installer, unmount the partition and convert it to APFS
 
+# Upgrading from Mojave (10.14) to Catalina (10.15)
+1. Upgrade to Lilu 1.3.7 (or higher), WhateverGreen 1.3.0 (or higher), AppleALC 1.3.9 (or higher), VoodooPS2 2.0.1 (or higher) (If these versions are not publicly released, grab from this repository)
+2. For VoodooPS2, remove the kext from `/Library/Extensions/` if there is any because we will be using acidanthera's VoodooPS2 that the kext must be placed at `/System/Library/Extensions`
+3. Upgrade Clover bootloader to r4954 (or higher)
+4. Prepare Catalina USB installer and do the conventional installation
+5. Setup Assistant may ask you to set up Touch ID, let it fail, it will tell you to Set up Touch ID later
+6. If you forgot to upgrade WhateverGreen, you will be unable to boot OS completely, add `-wegoff` boot flag to temporarily disable WhateverGreen, upgrade, then rebuild kext caches
+
+# Catalina's Known issue
+1. Karabiner mapping doesn't seem to work (VoodooPS2 issue?)
+
 # Pre-installation
 Get yourself a Mojave USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
 1. Acpi SSDT `PluginType` checked
@@ -49,8 +60,8 @@ Internal speaker and microphone work. For Headphone output, volume balance has t
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
 ## PS/2 Keyboard
-1. VoodooPS2Controller kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
-2. Karabiner (to remap your keyboard)
+1. [acidanthera's VoodooPS2Controller kext](https://github.com/acidanthera/VoodooPS2/) installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
+2. Karabiner Elements (to remap your keyboard)
 ## Intel UHD 630 Graphics
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
@@ -89,7 +100,7 @@ No thorough test on this.
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
-1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) and later (VoodooI2C + VoodooI2CHID + VoodooI2CUPDDEngine). 
+1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) or later (VoodooI2C + VoodooI2CHID + VoodooI2CUPDDEngine). 
 2. DSDT patches: **\[GPIO\] GPIO Controller Enable \[SKL+\]** and **\[Windows\] Windows 10 Patch**
 3. DSDT GPIO Pinning (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)) (look at `** MODIFIED **`):
 ```
