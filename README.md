@@ -1,5 +1,5 @@
 # ASUS-FX504GE-Hackintosh
-Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x and Catalina 10.15.x. High Sierra (10.13.x) can work on these laptops too, but Mojave is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
+Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x and Catalina 10.15.x. High Sierra (10.13.x) can work on these laptops too, but Mojave or higher is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
 
 # Notes
 1. 128 GB NVMe SSD is used for installing macOS
@@ -13,7 +13,7 @@ Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE l
 4. Prepare Catalina USB installer and do the conventional installation
 5. Setup Assistant may ask you to set up Touch ID, let it fail and it will tell you to Set up Touch ID later
 6. If you forgot to upgrade WhateverGreen, you will be unable to boot OS completely, add `-wegoff` boot flag to temporarily disable WhateverGreen, upgrade, then rebuild kext caches
-7. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements
+7. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements and remapping does not work
 
 # Pre-installation
 Get yourself a Mojave USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
@@ -53,7 +53,7 @@ Every external kext mentioned is assumed to be the latest.
 2. Clover Kernel Patches `Kernel LAPIC`, `KernelPM` and `AppleRTC` enabled
 3. ACPIBatteryManager kext installed to `/Library/Extensions`
 ## ALC255 Realtek Audio
-Internal speaker and microphone work. For Headphone output, volume balance has to be either left or right to make the sound normal.
+Internal speaker and microphone work. If headphone output produces weird audio, set volume balance to be either left or right. This issue has not been seen on Catalina.
 1. `/System/Library/Extensions/AppleGFXHDA.kext` **must be removed** (ID matched but not actually compatible)
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
