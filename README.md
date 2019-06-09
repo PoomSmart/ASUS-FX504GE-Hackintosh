@@ -1,5 +1,5 @@
 # ASUS-FX504GE-Hackintosh
-Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x. High Sierra can work on these laptops too, but Mojave is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
+Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x and Catalina 10.15.x. High Sierra (10.13.x) can work on these laptops too, but Mojave is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
 
 # Notes
 1. 128 GB NVMe SSD is used for installing macOS
@@ -11,11 +11,9 @@ Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE l
 2. For VoodooPS2, remove the kext from `/Library/Extensions/` if there is any because we will be using acidanthera's VoodooPS2 that the kext must be placed at `/System/Library/Extensions`
 3. Upgrade Clover bootloader to r4954 (or higher)
 4. Prepare Catalina USB installer and do the conventional installation
-5. Setup Assistant may ask you to set up Touch ID, let it fail, it will tell you to Set up Touch ID later
+5. Setup Assistant may ask you to set up Touch ID, let it fail and it will tell you to Set up Touch ID later
 6. If you forgot to upgrade WhateverGreen, you will be unable to boot OS completely, add `-wegoff` boot flag to temporarily disable WhateverGreen, upgrade, then rebuild kext caches
-
-# Catalina's Known issue
-1. Karabiner mapping doesn't seem to work (VoodooPS2 issue?)
+7. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements
 
 # Pre-installation
 Get yourself a Mojave USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
