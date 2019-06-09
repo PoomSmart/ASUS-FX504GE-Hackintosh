@@ -98,7 +98,7 @@ No thorough test on this.
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
-1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) or later (VoodooI2C + VoodooI2CHID + VoodooI2CUPDDEngine). 
+1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) or later (VoodooI2C + VoodooI2CHID). 
 2. DSDT patches: **\[GPIO\] GPIO Controller Enable \[SKL+\]** and **\[Windows\] Windows 10 Patch**
 3. DSDT GPIO Pinning (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)) (look at `** MODIFIED **`):
 ```
@@ -118,10 +118,6 @@ Device (TPD0)
 
     ...
 
-    Method (_STA, 0, NotSerialized)  // _STA: Status
-    {
-        Return (0x0F) // ** MODIFIED **
-    }
     Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
     {
         Return (ConcatenateResTemplate (SBFB, SBFG)) // ** MODIFIED **
