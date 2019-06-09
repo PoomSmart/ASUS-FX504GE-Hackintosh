@@ -94,7 +94,7 @@ No thorough test on this.
 3. `SSDT-XHC.aml` installed to `/EFI/Clover/ACPI/patched` for better USB support
 4. Disable unused USB ports via `/EFI/Clover/APCI/patched/SSDT-UIAC.aml`
 ## Realtek LAN
-1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
+1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## I2C ELAN1200 Precision TouchPad (pci8086,a368)
