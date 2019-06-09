@@ -1,5 +1,5 @@
 # ASUS-FX504GE-Hackintosh
-Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x and Catalina 10.15.x. High Sierra (10.13.x) can work on these laptops too, but Mojave or higher is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
+Necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https://www.ultrabookreview.com/19725-asus-tuf-fx504ge-review/) working with macOS Mojave 10.14.x and Catalina 10.15.x. High Sierra (10.13.x) can work on these laptops too, but Mojave or higher is strongly recommended. The following should also work with all ASUS FX504G.. laptop variants.
 
 # Notes
 1. 128 GB NVMe SSD is used for installing macOS
@@ -7,7 +7,7 @@ Discussion, necessary configurations and instructions to get [ASUS TUF FX504GE l
 3. If you are upgrading from the previous version and your partition is HFS+, better boot the installer, unmount the partition and convert it to APFS
 
 # Upgrading from Mojave (10.14) to Catalina (10.15)
-1. Upgrade to Lilu 1.3.7 (or higher), WhateverGreen 1.3.0 (or higher), AppleALC 1.3.9 (or higher), VoodooPS2 2.0.1 (or higher) (If these versions are not publicly released, grab from this repository)
+1. Upgrade to Lilu 1.3.7 (or higher), WhateverGreen 1.3.0 (or higher), AppleALC 1.3.9 (or higher), VoodooPS2 2.0.1 (or higher) (If any of these versions are not publicly released, grab ones from this repository)
 2. For VoodooPS2, remove the kext from `/Library/Extensions/` if there is any because we will be using acidanthera's VoodooPS2 that the kext must be placed at `/System/Library/Extensions`
 3. Upgrade Clover bootloader to r4954 (or higher)
 4. Prepare Catalina USB installer and do the conventional installation
