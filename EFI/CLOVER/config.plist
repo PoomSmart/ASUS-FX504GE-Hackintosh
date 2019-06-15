@@ -128,13 +128,6 @@
 		<dict>
 			<key>PciRoot(0)/Pci(0x02,0)</key>
 			<dict>
-				<key>#AAPL01,override-no-connect</key>
-				<data>
-				AP///////wAJ0eR4RVQAABAcAQOANR54Lq9FqVRQnCUV
-				UFSla4DRwIHAgQCBgKnAswABAQEBAjqAGHE4LUBYLEUA
-				DyghAAAeAAAA/wBLNEowMTg5NjAxOQogAAAA/QAyTB5T
-				EQAKICAgICAgAAAA/ABCZW5RIEdXMjQ3MAogATM=
-				</data>
 				<key>#framebuffer-con1-enable</key>
 				<integer>1</integer>
 				<key>#framebuffer-con1-pipe</key>
@@ -397,7 +390,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02847701QXJH4R1M</string>
+		<string>C02832405GUJH4RJC</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -427,9 +420,9 @@
 		<key>ProductName</key>
 		<string>MacBookPro15,2</string>
 		<key>SerialNumber</key>
-		<string>C02XQ0KPJHCD</string>
+		<string>C02X6XYJJHCD</string>
 		<key>SmUUID</key>
-		<string>3A9131B8-9C7A-4DC6-AB9C-6D356028CC28</string>
+		<string>3CE0FD1F-E1D4-4C96-B587-F9F507E872C2</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
