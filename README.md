@@ -16,7 +16,7 @@ Necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https
 7. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements and remapping does not work
 
 # Pre-installation
-Get yourself a Mojave USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
+Get yourself a Mojave/Catalina USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
 1. Acpi SSDT `PluginType` checked
 2. Graphics: Inject Intel checked
 3. Kernel Patches `Kernel LAPIC`, `KernelPM` and `AppleRTC` enabled
