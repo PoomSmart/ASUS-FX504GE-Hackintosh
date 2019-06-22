@@ -7,13 +7,12 @@ Necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https
 3. If you are upgrading from the previous version and your partition is HFS+, better boot the installer, unmount the partition and convert it to APFS
 
 # Upgrading from Mojave (10.14) to Catalina (10.15)
-1. Upgrade to Lilu 1.3.7 (or higher), WhateverGreen 1.3.0 (or higher), AppleALC 1.3.9 (or higher), VoodooPS2 2.0.1 (or higher), NoTouchID 1.0.2 (or higher) (If any of these versions are not publicly released, grab ones from this repository)
-2. For VoodooPS2, remove the kext from `/Library/Extensions/` if there is any because we will be using acidanthera's VoodooPS2 that the kext must be placed at `/System/Library/Extensions`
-3. Upgrade Clover bootloader to r4954 (or higher)
-4. Prepare Catalina USB installer and do the conventional installation
-5. Setup Assistant may ask you to set up Touch ID, let it fail and it will tell you to Set up Touch ID later
-6. If you forgot to upgrade WhateverGreen, you will be unable to boot OS completely, add `-wegoff` boot flag to temporarily disable WhateverGreen, upgrade, then rebuild kext caches
-7. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements and remapping does not work
+1. Upgrade to Lilu 1.3.7 (or higher), WhateverGreen 1.3.0 (or higher), AppleALC 1.3.9 (or higher), NoTouchID 1.0.2 (or higher) (If any of these versions are not publicly released, grab ones from this repository)
+2. Upgrade Clover bootloader to r4954 (or higher)
+3. Prepare Catalina USB installer and do the conventional installation
+4. Setup Assistant may ask you to set up Touch ID, let it fail and it will tell you to Set up Touch ID later
+5. If you forgot to upgrade WhateverGreen, you will be unable to boot OS completely, add `-wegoff` boot flag to temporarily disable WhateverGreen, upgrade, then rebuild kext caches
+6. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements and remapping does not work
 
 # Pre-installation
 Get yourself a Mojave/Catalina USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
@@ -58,14 +57,30 @@ Internal speaker and microphone work. If headphone output produces weird audio, 
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
 ## PS/2 Keyboard
-1. [acidanthera's VoodooPS2Controller kext](https://github.com/acidanthera/VoodooPS2/) installed to `/System/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
+1. VoodooPS2Controller installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
 2. Karabiner Elements (to remap your keyboard)
 ## Intel UHD 630 Graphics
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
 ## Sleep and Wake
-1. Manual static patching of `USB _PRW 0x6D (instant wake)` for Skylake, focusing on adding `_PRW` to `XDCI` and/or `CNVW` (Special thanks to [MegaStood](https://github.com/MegaStood/Hackintosh-FX504GE-ES72))
-2. Alternatively, compare and modify your `DSDT.aml` file with the one provided in this repository
+1. Applied static patching of `USB _PRW 0x6D (instant wake)` **for Skylake** (Special thanks to [MegaStood](https://github.com/MegaStood/Hackintosh-FX504GE-ES72))
+2. Patch `_PRW` method for XDCI as follows:
+```
+Device (XDCI)
+{
+    ...
+    Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
+    {
+        Return (Package (0x02)
+        {
+            0x6D, 
+            Zero
+        })
+    }
+    ...
+}
+```
+3. **Remove** `_PRW` method from `CNVW` device
 ### Backlight Control
 Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
 1. Latest `SSDT-PNLF.aml` and `SSDT-PNLFCFL.aml` installed to `/EFI/Clover/ACPI/patched`
