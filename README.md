@@ -63,8 +63,8 @@ Internal speaker and microphone work. If headphone output produces weird audio, 
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
 ## Sleep and Wake
-1. Applied static patching of `USB _PRW 0x6D (instant wake)` **for Skylake** (Special thanks to [MegaStood](https://github.com/MegaStood/Hackintosh-FX504GE-ES72))
-2. Patch `_PRW` method for XDCI as follows:
+1. Applied static patching of `USB _PRW 0x6D (instant wake)` **for Skylake** (credits to [MegaStood](https://github.com/MegaStood/Hackintosh-FX504GE-ES72))
+2. Patch `_PRW` method for `XDCI` device as follows:
 ```
 Device (XDCI)
 {
@@ -112,10 +112,10 @@ No thorough test on this.
 1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
-## I2C ELAN1200 Precision TouchPad (pci8086,a368)
+## I2C ELAN1200 Precision TouchPad (`pci8086,a368`)
 1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) or later (VoodooI2C + VoodooI2CHID). 
-2. DSDT patches: **\[GPIO\] GPIO Controller Enable \[SKL+\]** and **\[Windows\] Windows 10 Patch**
-3. DSDT GPIO Pinning (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)) (look at `** MODIFIED **`):
+2. DSDT patch: **\[Windows\] Windows 10 Patch**
+3. DSDT GPIO Pinning (More info [here](https://voodooi2c.github.io/#GPIO%20Pinning/GPIO%20Pinning)):
 ```
 Device (TPD0)
 {
@@ -138,6 +138,7 @@ Device (TPD0)
         Return (ConcatenateResTemplate (SBFB, SBFG)) // ** MODIFIED **
     }
 ```
+Alternatively, grab `/EFI/CLOVER/ACPI/patched/SSDT-GPI0.aml` and `/EFI/CLOVER/ACPI/patched/SSDT-TPD0.aml` provided in this repository.
 
 Trackpad works okay but with minor stuttering.
 
