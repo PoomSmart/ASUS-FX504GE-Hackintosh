@@ -14,6 +14,9 @@ Necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https
 5. If you forgot to upgrade WhateverGreen, you will be unable to boot OS completely, add `-wegoff` boot flag to temporarily disable WhateverGreen, upgrade, then rebuild kext caches
 6. Apply [this workaround](https://github.com/tekezo/Karabiner-Elements/issues/1867#issuecomment-498556572) if you use Karabiner Elements and remapping does not work
 
+# Upgrading from Clover v2.4k to Clover v2.5k
+**The new UEFI drivers directory is now** `/EFI/CLOVER/drivers/UEFI`, make sure you move every UEFI driver from the old (Clover v2.4k) directory (`/EFI/CLOVER/drivers64UEFI`) to this directory after you upgraded Clover, **except for HFSPlus-64.efi** as there has been a new version of it that works with Clover v2.5k and should come pre-installed by default by the Clover v2.5k installer.
+
 # Pre-installation
 Get yourself a Mojave/Catalina USB installer with Clover installed. Important Clover settings (via Clover Configurator) are:
 1. Acpi SSDT `PluginType` checked
@@ -29,7 +32,7 @@ Get yourself a Mojave/Catalina USB installer with Clover installed. Important Cl
     1. UsbKbDxe-64
     1. UsbMouseDxe-64
     1. NvmExpressDxe-64.efi (If you use NVMe SSD)
-    1. HFSPlus-64 (If you have HFS+ partitions)
+    1. HFSPlus-64 (If you have HFS+ partitions) - **If you use Clover v2.5k, it should be named as just HFSPlus.efi**
     1. NTFS-64 (If you have NTFS partitions)
  
 Kexts installed to `/EFI/CLOVER/kexts/Other`: **FakeSMC**, **VoodooPS2Controller**
