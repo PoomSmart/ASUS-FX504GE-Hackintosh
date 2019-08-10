@@ -120,9 +120,7 @@ No thorough test on this.
 ### ** Caution: Latest unofficial VoodooI2C may cause kernel panic whenever patched DSDT.aml is used, there's no way around that yet **
 1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) or later (VoodooI2C + VoodooI2CHID)
 2. DSDT patch: **\[Windows\] Windows 10 Patch**
-3. Use `/EFI/CLOVER/ACPI/patched/SSDT-GPI0.aml` and `/EFI/CLOVER/ACPI/patched/SSDT-TPD0.aml` from this repository
-
-Provided below is the patch just to demonstrate:
+3. Patch `TPD0` inside `/EFI/CLOVER/ACPI/patched/DSDT.aml` as follows:
 ```
 Device (TPD0)
 {
