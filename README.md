@@ -60,7 +60,7 @@ Internal speaker and microphone work. If headphone output produces weird audio, 
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
 ## PS/2 Keyboard
-1. VoodooPS2Controller installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
+1. [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2) installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
 2. Karabiner Elements (to remap your keyboard)
 ## Intel UHD 630 Graphics
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
