@@ -99,7 +99,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 -igfxnohdmi -alcbeta -uia_ignore_rmcf -lilubetaall keepsyms=1 -wegbeta -no_compat_check darkwake=0 -nobiobeta</string>
+		<string>dart=0 -igfxnohdmi -alcbeta -lilubetaall keepsyms=1 -wegbeta -no_compat_check darkwake=0 -nobiobeta</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
