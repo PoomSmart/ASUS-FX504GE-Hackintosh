@@ -117,6 +117,7 @@ No thorough test on this.
 ## SATA controller
 1. SATA-300-series-unsupported kext installed to `/Library/Extensions`
 ## I2C ELAN1200 Precision TouchPad (`pci8086,a368`)
+### ** Caution: Latest unofficial VoodooI2C may cause kernel panic whenever patched DSDT.aml is used, there's no way around that yet **
 1. VoodooI2C kexts [version 2.2](https://github.com/alexandred/VoodooI2C) or later (VoodooI2C + VoodooI2CHID)
 2. DSDT patch: **\[Windows\] Windows 10 Patch**
 3. Use `/EFI/CLOVER/ACPI/patched/SSDT-GPI0.aml` and `/EFI/CLOVER/ACPI/patched/SSDT-TPD0.aml` from this repository
