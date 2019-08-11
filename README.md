@@ -77,7 +77,7 @@ if (adbKeyCode == 0x39 && version_major >= 16) // Caps Lock workaround
 
 ## Intel UHD 630 Graphics
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
-2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
+2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other`
 ## Sleep and Wake
 1. Applied static patching of `USB _PRW 0x6D (instant wake)` **for Skylake** (credits to [MegaStood](https://github.com/MegaStood/Hackintosh-FX504GE-ES72))
 2. Patch `_PRW` method for `XDCI` device as follows:
@@ -99,8 +99,8 @@ Device (XDCI)
 3. **Remove** `_PRW` method from `CNVW` device
 ### Backlight Control
 Install the latest WhateverGreen. If you use AppleBacklightFixup, remove it.
-1. Latest `SSDT-PNLF.aml` and `SSDT-PNLFCFL.aml` installed to `/EFI/Clover/ACPI/patched`
-2. Brightness adjustment keys working by modifying `/EFI/Clover/ACPI/patched/DSDT.aml`
+1. Latest `SSDT-PNLF.aml` and `SSDT-PNLFCFL.aml` installed to `/EFI/CLOVER/ACPI/patched`
+2. Brightness adjustment keys working by modifying `/EFI/CLOVER/ACPI/patched/DSDT.aml`
    ```
    Scope (_SB.PCI0.LPCB.EC0) {
         ...
@@ -122,9 +122,9 @@ No thorough test on this.
 ## USB 2.0/3.1 Ports
 1. Clover USB injection `Inject=false`
 2. USBInjectAll and XHCI-300-series-injector kexts installed to `/Library/Extensions`
-3. `SSDT-XHC.aml` installed to `/EFI/Clover/ACPI/patched` for better USB support
-4. Disable unused USB ports via `/EFI/Clover/APCI/patched/SSDT-UIAC.aml`
-5. Override AppleBusPowerController profile (and fix **bootloop on Catalina beta 5**) via `/EFI/Clover/ACPI/patched/SSDT-EC.aml`
+3. `SSDT-XHC.aml` installed to `/EFI/CLOVER/ACPI/patched` for better USB support
+4. Disable unused USB ports via `/EFI/CLOVER/APCI/patched/SSDT-UIAC.aml`
+5. Override AppleBusPowerController profile (and fix **bootloop on Catalina beta 5**) via `/EFI/CLOVER/ACPI/patched/SSDT-EC.aml`
 ## Realtek LAN
 1. [RealtekRTL8111](https://www.insanelymac.com/forum/topic/287161-new-driver-for-realtek-rtl8111/) kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using internet in Recovery mode)
 ## SATA controller
@@ -164,7 +164,7 @@ Trackpad works okay but with minor stuttering.
 
 # Things that do not work
 ## NVIDIA Geforce 1050 Ti (Optimus)
-Discrete graphic, we probably never see the day. For now, use `SSDT-DDGPU.aml` (in `/EFI/Clover/ACPI/patched`) to power it off.
+Discrete graphic, we probably never see the day. For now, use `SSDT-DDGPU.aml` (in `/EFI/CLOVER/ACPI/patched`) to power it off.
 ## Intel Wi-Fi AC 9560
 Intel built-in Wi-Fi chipset, we again probably never see the day.
 ## Intel Bluetooth
