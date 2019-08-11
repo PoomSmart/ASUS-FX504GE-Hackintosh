@@ -60,8 +60,21 @@ Internal speaker and microphone work. If headphone output produces weird audio, 
 2. AppleALC kext installed to `/Library/Extensions`
 3. Clover Audio injection `Inject=3` (`ResetHDA` may be enabled)
 ## PS/2 Keyboard
-1. [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2) installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
-2. Karabiner Elements (to remap your keyboard)
+**Custom-built** [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2) kext installed to `/Library/Extensions` and `/EFI/CLOVER/kexts/Other` (using keyboard in Recovery mode)
+
+This kext has its own CAPS lock workaround, plus setting `Swap command and option` value to `false` inside `VoodooPS2Keyboard` 's `Info.plist`, you can grab it from this repository.
+
+```
+// Simplified code
+// CAPS lock may not work properly with Keyboard Viewer active, might be improved in the future
+if (adbKeyCode == 0x39 && version_major >= 16) // Caps Lock workaround
+{
+    clock_get_uptime(&now_abs);
+    dispatchKeyboardEventX(adbKeyCode, goingDown, now_abs);
+    return true;
+}
+```
+
 ## Intel UHD 630 Graphics
 1. Enabled by `device-properties` injection (have Clover's Inject Intel **unchecked**, go with `0x3E9B0000`)
 2. WhateverGreen kext (with CFL backlight fix) installed to `/Library/Extensions`
