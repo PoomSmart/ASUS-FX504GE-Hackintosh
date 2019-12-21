@@ -57,7 +57,7 @@ Orders matter. Think about which kexts should load before which.
 9. **WhateverGreen** (Graphics)
 10. **AppleALC** (Audio)
 11. NoTouchID
-12. **VoodooPS2Controller** (PS/2 keyboard)
+12. **VoodooPS2Controller** (PS/2 keyboard) (Must also be installed at `/Library/Extensions`)
 13. **USBInjectAll** (USB ports, built-in webcam)
 14. RealtekRTL8111 (LAN internet)
 15. **XHCI-unsupported** (USB3)
@@ -105,6 +105,7 @@ This is where you put SMBIOS data, make sure you provide the following:
 4. `SystemProductName` as `MacBookPro15,2` or similar
 5. `SystemSerialNumber`
 6. `SystemUUID`
+**These values are masked from the provided config file, make sure you enter your own before testing!**
 
 ## UEFI
 1. `ConnectDrivers` **enabled**

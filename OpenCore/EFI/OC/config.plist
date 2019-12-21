@@ -804,17 +804,17 @@
 		<key>Generic</key>
 		<dict>
 			<key>MLB</key>
-			<string>C02140302D5DMT31M</string>
+			<string>get-your-own</string>
 			<key>ROM</key>
-			<data>GDG/l+Qi</data>
+			<data>get-your-own</data>
 			<key>SpoofVendor</key>
 			<true/>
 			<key>SystemProductName</key>
 			<string>MacBookPro15,2</string>
 			<key>SystemSerialNumber</key>
-			<string>C02XQ0KPJHCD</string>
+			<string>get-your-own</string>
 			<key>SystemUUID</key>
-			<string>3A9131B8-9C7A-4DC6-AB9C-6D356028CC28</string>
+			<string>get-your-own</string>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>
