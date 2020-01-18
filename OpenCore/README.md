@@ -1,6 +1,8 @@
 # OpenCore notes
 Configurations here are considered experimental. Use at your own risk.
 
+Tested version: 0.5.4
+
 # Configurations
 
 ## ACPI
@@ -116,6 +118,8 @@ This is where you put SMBIOS data, make sure you provide the following:
 3. `ApfsDriverLoader.efi`
 4. `FwRuntimeServices.efi` (UEFI + AptioMemoryFix)
 5. `VirtualSMC.efi`
+6. `NvmExpressDxe.efi` (NVMe SSD)
+7. `XhciDxe.efi` (Peripherals)
 
 ### Input
 1. `KeySupport` disabled (already use `UsbKbDxe.efi`)
